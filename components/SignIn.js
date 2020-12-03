@@ -21,8 +21,13 @@ import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { useSelector, useDispatch } from 'react-redux';
+import changeLocael from '../utils/changeLocael';
 
 function Copyright() {
+  const dispatch = useDispatch();
+  const { storeLocale } = useSelector((store) => ({
+    storeLocale: store.storeLocale
+}))
 
   return (
     <>
@@ -33,21 +38,39 @@ function Copyright() {
           marginBottom: "15px"
         }}
       >
-        <a href="/ru">
+        <Button
+          color="primary"
+          onClick={() => { changeLocael('ru', dispatch, storeLocale) }}
+        >
           Русский
-                </a>
-        <a href="/uk" >
+          </Button>
+
+        <Button
+          color="primary"
+          onClick={() => { changeLocael('uk', dispatch, storeLocale) }}
+        >
           Українська
-                </a>
-        <a href="/en">
+          </Button>
+
+        <Button
+          color="primary"
+          onClick={() => { changeLocael('en', dispatch, storeLocale) }}
+        >
           English
-                </a>
-        <a href="/pl" >
+          </Button>
+
+        <Button
+          color="primary"
+          onClick={() => { changeLocael('pl', dispatch, storeLocale) }}
+        >
           Polski
-                </a>
-        <a href="/bg" >
+          </Button>
+        <Button
+          color="primary"
+          onClick={() => { changeLocael('bg', dispatch, storeLocale) }}
+        >
           Български
-                </a>
+          </Button>
       </div>
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
@@ -86,7 +109,7 @@ export default function SignIn() {
   const { locale, stateForm } = useSelector((store) => ({
     locale: store.locale,
     stateForm: store.stateForm
-  }))
+  }));
   const dispatch = useDispatch();
 
   const [alertOpen, setAlertOpen] = useState({
